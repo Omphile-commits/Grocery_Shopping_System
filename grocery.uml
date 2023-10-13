@@ -1,0 +1,70 @@
+@startuml
+
+class Product {
+  - productId: int
+  - name: String
+  - price: double
+  - quantity: int
+
+  + Product(productId: int, name: String, price: double, quantity: int)
+  + getProductID(): int
+  + getName(): String
+  + getPrice(): double
+  + getQuantity(): int
+  + setPrice(price: double): void
+  + setQuantity(quantity: int): void
+}
+
+class Cart {
+  - products: List<Product>
+
+  + Cart()
+  + addProduct(product: Product): void
+  + removeProduct(product: Product): void
+  + getProducts(): List<Product>
+  + clearCart(): void
+}
+
+class Order {
+  - orderId: int
+  - orderDate: Date
+  - products: List<Product>
+
+  + Order(orderId: int, orderDate: Date)
+  + getOrderId(): int
+  + getOrderDate(): Date
+  + getProducts(): List<Product>
+  + addProduct(product: Product): void
+  + removeProduct(product: Product): void
+  + calculateTotalAmount(): double
+}
+
+class Customer {
+  - customerId: int
+  - name: String
+  - orders: List<Order>
+
+  + Customer(customerId: int, name: String)
+  + placeOrder(order: Order): void
+  + getOrders(): List<Order>
+}
+
+class Main {
+  - cart: Cart
+
+  + main(args: String[]): void
+  + addToCart(productName: String, quantity: int): void
+  + placeOrder(): void
+  + updateCartTextArea(): void
+}
+
+class Store {
+  - inventory: List<Product>
+
+  + Store()
+  + addProductToInventory(product: Product): void
+  + getInventory(): List<Product>
+}
+
+@enduml
+
